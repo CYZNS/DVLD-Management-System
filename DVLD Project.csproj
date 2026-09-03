@@ -280,5 +280,15 @@
   <ItemGroup>
     <None Include="Resources\anonymous-man.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DVLD BusinessLayer\DVLD BusinessLayer.csproj">
+      <Project>{74931a9d-1b13-4b8f-a7f3-d5fdff1eee69}</Project>
+      <Name>DVLD BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="DVLD.Models\DVLD.Models.csproj">
+      <Project>{fa290e51-1949-40be-9006-b5627fed70ea}</Project>
+      <Name>DVLD.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
