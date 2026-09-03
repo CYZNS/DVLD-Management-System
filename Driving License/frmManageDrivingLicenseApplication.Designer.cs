@@ -39,13 +39,13 @@
             this.tbFilterBy = new Guna.UI2.WinForms.Guna2TextBox();
             this.cbFilterBy = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbFilterBy = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.pbAddUser = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.btnAddLocalDrivingApplication = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
             this.dgvLocalDrivingApplications = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).BeginInit();
+            this.editLocalDrivingApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddLocalDrivingApplication)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingApplications)).BeginInit();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -159,21 +159,22 @@
             this.lbFilterBy.TabIndex = 23;
             this.lbFilterBy.Text = "FilterBy:";
             // 
-            // pbAddUser
+            // btnAddLocalDrivingApplication
             // 
-            this.pbAddUser.BackColor = System.Drawing.Color.Transparent;
-            this.pbAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbAddUser.FillColor = System.Drawing.Color.Transparent;
-            this.pbAddUser.Image = ((System.Drawing.Image)(resources.GetObject("pbAddUser.Image")));
-            this.pbAddUser.ImageRotate = 0F;
-            this.pbAddUser.Location = new System.Drawing.Point(1195, 123);
-            this.pbAddUser.Name = "pbAddUser";
-            this.pbAddUser.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.pbAddUser.Size = new System.Drawing.Size(73, 62);
-            this.pbAddUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAddUser.TabIndex = 22;
-            this.pbAddUser.TabStop = false;
+            this.btnAddLocalDrivingApplication.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddLocalDrivingApplication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddLocalDrivingApplication.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddLocalDrivingApplication.FillColor = System.Drawing.Color.Transparent;
+            this.btnAddLocalDrivingApplication.Image = ((System.Drawing.Image)(resources.GetObject("btnAddLocalDrivingApplication.Image")));
+            this.btnAddLocalDrivingApplication.ImageRotate = 0F;
+            this.btnAddLocalDrivingApplication.Location = new System.Drawing.Point(1195, 123);
+            this.btnAddLocalDrivingApplication.Name = "btnAddLocalDrivingApplication";
+            this.btnAddLocalDrivingApplication.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnAddLocalDrivingApplication.Size = new System.Drawing.Size(73, 62);
+            this.btnAddLocalDrivingApplication.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddLocalDrivingApplication.TabIndex = 22;
+            this.btnAddLocalDrivingApplication.TabStop = false;
+            this.btnAddLocalDrivingApplication.Click += new System.EventHandler(this.btnAddLocalDrivingApplication_Click);
             // 
             // btnClose
             // 
@@ -246,22 +247,11 @@
             this.dgvLocalDrivingApplications.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
             this.dgvLocalDrivingApplications.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(155, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1130, 81);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Manage Driving License Applications";
-            // 
             // guna2ContextMenuStrip1
             // 
             this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem});
+            this.editLocalDrivingApplicationToolStripMenuItem});
             this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
             this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
@@ -274,12 +264,23 @@
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(211, 56);
             // 
-            // editToolStripMenuItem
+            // editLocalDrivingApplicationToolStripMenuItem
             // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.editToolStripMenuItem.Text = "edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            this.editLocalDrivingApplicationToolStripMenuItem.Name = "editLocalDrivingApplicationToolStripMenuItem";
+            this.editLocalDrivingApplicationToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editLocalDrivingApplicationToolStripMenuItem.Text = "edit";
+            this.editLocalDrivingApplicationToolStripMenuItem.Click += new System.EventHandler(this.editLocalDrivingApplicationToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(155, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1130, 81);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Manage Driving License Applications";
             // 
             // frmManageLocalDrivingLicenseApplications
             // 
@@ -292,14 +293,14 @@
             this.Controls.Add(this.tbFilterBy);
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.lbFilterBy);
-            this.Controls.Add(this.pbAddUser);
+            this.Controls.Add(this.btnAddLocalDrivingApplication);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvLocalDrivingApplications);
             this.Controls.Add(this.label1);
             this.Name = "frmManageLocalDrivingLicenseApplications";
             this.Text = "frmManageDrivingLicenseApplication";
             this.Load += new System.EventHandler(this.frmManageDrivingLicenseApplication_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAddUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddLocalDrivingApplication)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingApplications)).EndInit();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -315,11 +316,11 @@
         private Guna.UI2.WinForms.Guna2TextBox tbFilterBy;
         private Guna.UI2.WinForms.Guna2ComboBox cbFilterBy;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbFilterBy;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox pbAddUser;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox btnAddLocalDrivingApplication;
         private Guna.UI2.WinForms.Guna2GradientButton btnClose;
         private Guna.UI2.WinForms.Guna2DataGridView dgvLocalDrivingApplications;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editLocalDrivingApplicationToolStripMenuItem;
     }
 }

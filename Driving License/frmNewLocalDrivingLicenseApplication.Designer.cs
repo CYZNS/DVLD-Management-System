@@ -35,16 +35,16 @@
             this.lbUser = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lbApplicationID = new System.Windows.Forms.Label();
+            this.lbLDApplicationID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tcPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.personDetailsWithFilter1 = new DVLD_Project.Controls.PersonDetailsWithFilter();
             this.tbcDrivingLicenseApplicationIfno = new Guna.UI2.WinForms.Guna2TabControl();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.personDetailsWithFilter1 = new DVLD_Project.Controls.PersonDetailsWithFilter();
             this.tcApplicationInfo.SuspendLayout();
             this.tcPersonalInfo.SuspendLayout();
             this.tbcDrivingLicenseApplicationIfno.SuspendLayout();
@@ -58,7 +58,7 @@
             this.tcApplicationInfo.Controls.Add(this.lbUser);
             this.tcApplicationInfo.Controls.Add(this.label4);
             this.tcApplicationInfo.Controls.Add(this.label6);
-            this.tcApplicationInfo.Controls.Add(this.lbApplicationID);
+            this.tcApplicationInfo.Controls.Add(this.lbLDApplicationID);
             this.tcApplicationInfo.Controls.Add(this.label5);
             this.tcApplicationInfo.Controls.Add(this.label3);
             this.tcApplicationInfo.Controls.Add(this.label1);
@@ -135,15 +135,15 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "ApplicationFees:";
             // 
-            // lbApplicationID
+            // lbLDApplicationID
             // 
-            this.lbApplicationID.AutoSize = true;
-            this.lbApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbApplicationID.Location = new System.Drawing.Point(320, 97);
-            this.lbApplicationID.Name = "lbApplicationID";
-            this.lbApplicationID.Size = new System.Drawing.Size(56, 25);
-            this.lbApplicationID.TabIndex = 14;
-            this.lbApplicationID.Text = "????";
+            this.lbLDApplicationID.AutoSize = true;
+            this.lbLDApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLDApplicationID.Location = new System.Drawing.Point(320, 97);
+            this.lbLDApplicationID.Name = "lbLDApplicationID";
+            this.lbLDApplicationID.Size = new System.Drawing.Size(56, 25);
+            this.lbLDApplicationID.TabIndex = 14;
+            this.lbLDApplicationID.Text = "????";
             // 
             // label5
             // 
@@ -201,14 +201,7 @@
             this.btnNext.Size = new System.Drawing.Size(170, 37);
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = "Next";
-            // 
-            // personDetailsWithFilter1
-            // 
-            this.personDetailsWithFilter1.FilterEnabled = true;
-            this.personDetailsWithFilter1.Location = new System.Drawing.Point(3, 3);
-            this.personDetailsWithFilter1.Name = "personDetailsWithFilter1";
-            this.personDetailsWithFilter1.Size = new System.Drawing.Size(1033, 631);
-            this.personDetailsWithFilter1.TabIndex = 1;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // tbcDrivingLicenseApplicationIfno
             // 
@@ -269,6 +262,14 @@
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             // 
+            // personDetailsWithFilter1
+            // 
+            this.personDetailsWithFilter1.FilterEnabled = true;
+            this.personDetailsWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.personDetailsWithFilter1.Name = "personDetailsWithFilter1";
+            this.personDetailsWithFilter1.Size = new System.Drawing.Size(1033, 631);
+            this.personDetailsWithFilter1.TabIndex = 1;
+            // 
             // frmNewLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -279,6 +280,7 @@
             this.Controls.Add(this.tbcDrivingLicenseApplicationIfno);
             this.Name = "frmNewLocalDrivingLicenseApplication";
             this.Text = "frmNewLocalDrivingLicenseApplication";
+            this.Load += new System.EventHandler(this.frmNewLocalDrivingLicenseApplication_Load);
             this.tcApplicationInfo.ResumeLayout(false);
             this.tcApplicationInfo.PerformLayout();
             this.tcPersonalInfo.ResumeLayout(false);
@@ -295,7 +297,7 @@
         private Controls.PersonDetailsWithFilter personDetailsWithFilter1;
         private Guna.UI2.WinForms.Guna2TabControl tbcDrivingLicenseApplicationIfno;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lbApplicationID;
+        private System.Windows.Forms.Label lbLDApplicationID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;

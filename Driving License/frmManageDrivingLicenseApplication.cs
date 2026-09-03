@@ -66,14 +66,14 @@ namespace DVLD_Project.Driving_License
 
         }
 
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editLocalDrivingApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvLocalDrivingApplications.CurrentRow != null)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to edit this User?", "Confirm Edit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    int selectedID = (int)dgvLocalDrivingApplications.CurrentRow.Cells["L.D.L.AppID"].Value;
+                    int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
                     frmNewLocalDrivingLicenseApplication form = new frmNewLocalDrivingLicenseApplication(selectedID);
                     form.StartPosition = FormStartPosition.CenterScreen;
                     form.ShowDialog();
@@ -85,6 +85,17 @@ namespace DVLD_Project.Driving_License
             {
                 MessageBox.Show("Error couldn't update person.");
             }
+        }
+        private void showAddLocalDrivingLicenseApplicationForm()
+        {
+            frmNewLocalDrivingLicenseApplication form = new frmNewLocalDrivingLicenseApplication();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
+            refreshForm();
+        }
+        private void btnAddLocalDrivingApplication_Click(object sender, EventArgs e)
+        {
+            showAddLocalDrivingLicenseApplicationForm();
         }
     }
 }

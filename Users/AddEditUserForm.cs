@@ -183,7 +183,7 @@ namespace DVLD_Project
                 
 
             }
-
+            // I think this is not needed because the form will be filled with the user details in case of update mode
             tbUserName.Text = "";
             tbPassword.Text = "";
             tbConfirmPassword.Text = "";
