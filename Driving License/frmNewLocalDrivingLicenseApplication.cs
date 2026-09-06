@@ -125,7 +125,10 @@ namespace DVLD_Project.Driving_License
         {
             _LDApplication.PersonID = personDetailsWithFilter1.personID;
             _LDApplication.Person = PeopleBusiness.FindPerson(_LDApplication.PersonID);
-            _LDApplication.ApplicationDate = DateTime.Now;
+            if(_Mode == enmode.AddNewLocalDrivingApp) // if the mode is update , I want to keep the original application date and only change the last status update
+            {
+                _LDApplication.ApplicationDate = DateTime.Now;
+            }
             _LDApplication.ApplicationTypeID = 1;
             _LDApplication.applicationType =applicationType;
             _LDApplication.ApplicationStatus = 1;

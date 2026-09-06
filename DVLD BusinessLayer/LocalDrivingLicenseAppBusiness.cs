@@ -36,7 +36,7 @@ namespace DVLD_BusinessLayer
         {
             //call the application  save method to save the application to the database
 
-            ApplicationModel application = new ApplicationModel(-1, LdApplication.PersonID, LdApplication.Person, LdApplication.ApplicationDate, LdApplication.ApplicationTypeID, LdApplication.applicationType
+            ApplicationModel application = new ApplicationModel(LdApplication.ApplicationID, LdApplication.PersonID, LdApplication.Person, LdApplication.ApplicationDate, LdApplication.ApplicationTypeID, LdApplication.applicationType
                 , LdApplication.ApplicationStatus, LdApplication.LastStatusDate, LdApplication.PaidFees, LdApplication.UserID);
 
             if (ApplicationBusiness.Save(application))

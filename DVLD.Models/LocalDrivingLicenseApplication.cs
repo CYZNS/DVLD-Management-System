@@ -23,14 +23,6 @@ namespace DVLD.Models
             LicenseClassID = licenseClassID;
         }
 
-        public LocalDrivingLicenseApplication(ApplicationModel application, int localDrivingLicenseApplicationID,
-           int licenseClassID)
-           : base(application.ApplicationID, application.PersonID, application.Person, application.ApplicationDate, application.ApplicationTypeID, application.applicationType, application.ApplicationStatus, application.LastStatusDate, application.PaidFees, application.UserID)
-        {
-
-            LocalDrivingLicenseApplicationID = localDrivingLicenseApplicationID;
-            LicenseClassID = licenseClassID;
-        }
         public LocalDrivingLicenseApplication()
         {
             LocalDrivingLicenseApplicationID = -1;
