@@ -262,12 +262,12 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(105, 28);
             // 
             // editLocalDrivingApplicationToolStripMenuItem
             // 
             this.editLocalDrivingApplicationToolStripMenuItem.Name = "editLocalDrivingApplicationToolStripMenuItem";
-            this.editLocalDrivingApplicationToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editLocalDrivingApplicationToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.editLocalDrivingApplicationToolStripMenuItem.Text = "edit";
             this.editLocalDrivingApplicationToolStripMenuItem.Click += new System.EventHandler(this.editLocalDrivingApplicationToolStripMenuItem_Click);
             // 

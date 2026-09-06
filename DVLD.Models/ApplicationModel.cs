@@ -55,7 +55,7 @@ namespace DVLD.Models
             this.UserID = userID;
         }
 
-        public ApplicationModel() : this(-1, -1, null, DateTime.Now, -1, null, -1, DateTime.Now, (decimal)0.00, -1)
+        public ApplicationModel() : this(-1, -1, null, DateTime.Now, -1, null, 1, DateTime.Now, (decimal)0.00, -1)
         {
 
         }

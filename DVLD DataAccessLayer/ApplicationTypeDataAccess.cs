@@ -62,6 +62,32 @@ namespace DVLD_DataAccessLayer
             return null;
 
         }
+        //public static ApplicationType FindApplicationType(string ApplicationTypeID)
+        //{
+        //    string query = @"select * from ApplicationTypes where ApplicationTypeID = @applicationTypeID;";
+        //    using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+        //    using (SqlCommand command = new SqlCommand(query, connection))
+        //    {
+        //        command.Parameters.AddWithValue("@applicationTypeID", ApplicationTypeID);
+        //        try
+        //        {
+        //            connection.Open();
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    return new ApplicationType(ApplicationTypeID, reader["ApplicationTypeTitle"] as string ?? "", (decimal)reader["ApplicationFees"]);
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine("Error: " + ex.Message);
+        //        }
+        //    }
+        //    return null;
+
+        //}
 
         public static bool UpdateApplicationType(ApplicationType applicationType)
         {

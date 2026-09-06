@@ -19,7 +19,8 @@ namespace DVLD_Project.Driving_License
 
         int _LocalDrivingID = -1;
         LocalDrivingLicenseApplication _LDApplication;
-        User _UserMadeTheApplication;
+        ApplicationType applicationType = ApplicationTypeBusiness.FindApplicationType(1);
+
         public frmNewLocalDrivingLicenseApplication()
         {
             InitializeComponent();
@@ -34,15 +35,22 @@ namespace DVLD_Project.Driving_License
         private void _ResetDefualtValues()
         {
             //this will setup the form with the default values based on the mode (Add or Update)
+            fillComboBoxWithLicenseClasses();
 
             if (_Mode == enmode.AddNewLocalDrivingApp)
             {
                 this.Text = "Add New Local Driving License Application";
+                _LDApplication = new LocalDrivingLicenseApplication();
                 tcApplicationInfo.Enabled = false;
                 btnSave.Enabled = false;
+
+                cbLicenseClasses.SelectedIndex = 2;
+                lbApplicationFees.Text = applicationType.ApplicationFees.ToString();
+                lbApplicationDate.Text = DateTime.Now.ToShortDateString();
+                lbUser.Text = clsGlobalSettings.currentUser.UserName;
             }
             else //update Mode
-            { 
+            {
                 this.Text = "Update Local Driving License Application";
 
                 tcApplicationInfo.Enabled = true;
@@ -52,7 +60,7 @@ namespace DVLD_Project.Driving_License
 
 
         }
-         private void fillFormWithUserDetails() 
+         private void fillFormWithDetailsForUpdateMode()
          {
             _LDApplication = LocalDrivingLicenseAppBusiness.FindLocalDrivingApplication(_LocalDrivingID);
             
@@ -63,14 +71,14 @@ namespace DVLD_Project.Driving_License
 
                 return;
             }
-            //this code will be executed only if the user is found and the form is in update mode
-            _UserMadeTheApplication = UserBusiness.FindUser(_LDApplication.UserID);
+            
+            
             personDetailsWithFilter1.loadPersonDetailsForUpdate(_LDApplication.Person);
             lbLDApplicationID.Text = _LDApplication.LocalDrivingLicenseApplicationID.ToString();
             lbApplicationDate.Text = _LDApplication.ApplicationDate.ToString();
             cbLicenseClasses.SelectedValue = _LDApplication.LicenseClassID;
-            lbApplicationFees.Text = _LDApplication.applicationType.ApplicationFees.ToString();
-            lbUser.Text = _UserMadeTheApplication.UserName;
+            lbApplicationFees.Text = _LDApplication.PaidFees.ToString();
+            lbUser.Text = UserBusiness.FindUser(_LDApplication.UserID).UserName;
          }
         private void fillComboBoxWithLicenseClasses()
         {
@@ -81,14 +89,12 @@ namespace DVLD_Project.Driving_License
         }
         private void frmNewLocalDrivingLicenseApplication_Load(object sender, EventArgs e)
         {
-            fillComboBoxWithLicenseClasses();
             _ResetDefualtValues();
             if(_Mode == enmode.UpdateLocalDrivingApp)
             {
-                fillFormWithUserDetails();
+                fillFormWithDetailsForUpdateMode();
             }
         }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (_Mode == enmode.AddNewLocalDrivingApp)
@@ -103,9 +109,58 @@ namespace DVLD_Project.Driving_License
                     return;
 
                 }
-                // the personID is not -1 ( valid ) and the person is not already a user
+                // the personID is not -1 ( valid ) 
                 btnSave.Enabled = true;
                 tcApplicationInfo.Enabled = true;
+            }
+            else // update mode
+            {
+                tcApplicationInfo.Enabled = true;
+                btnSave.Enabled = true;
+            }
+
+            tbcDrivingLicenseApplicationIfno.SelectedIndex = 1;
+        }
+        private void fillLocalDrivingApplicationWithFormData()
+        {
+            _LDApplication.PersonID = personDetailsWithFilter1.personID;
+            _LDApplication.Person = PeopleBusiness.FindPerson(_LDApplication.PersonID);
+            _LDApplication.ApplicationDate = DateTime.Now;
+            _LDApplication.ApplicationTypeID = 1;
+            _LDApplication.applicationType =applicationType;
+            _LDApplication.ApplicationStatus = 1;
+            _LDApplication.LastStatusDate = DateTime.Now;
+            _LDApplication.PaidFees = _LDApplication.applicationType.ApplicationFees;
+            _LDApplication.UserID = clsGlobalSettings.currentUser.UserID;
+            _LDApplication.LicenseClassID = (int)cbLicenseClasses.SelectedValue;
+
+        }
+        private void changeFormModeToUpdateMode()
+        {
+            this.Text = "Update Local Driving License Application";
+
+            lbLDApplicationID.Text = _LDApplication.LocalDrivingLicenseApplicationID.ToString();
+            _Mode = enmode.UpdateLocalDrivingApp;
+            personDetailsWithFilter1.FilterEnabled = false;
+
+
+            // check this
+            personDetailsWithFilter1.disableAndSetupGPFilerForUpdateMode();
+
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            fillLocalDrivingApplicationWithFormData();
+            if(LocalDrivingLicenseAppBusiness.Save(_LDApplication))
+            {
+                changeFormModeToUpdateMode();
+                MessageBox.Show("Local Driving License Application Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error Saving Local Driving License Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

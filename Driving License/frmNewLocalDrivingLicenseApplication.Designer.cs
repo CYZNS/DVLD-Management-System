@@ -41,10 +41,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tcPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.personDetailsWithFilter1 = new DVLD_Project.Controls.PersonDetailsWithFilter();
             this.tbcDrivingLicenseApplicationIfno = new Guna.UI2.WinForms.Guna2TabControl();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.personDetailsWithFilter1 = new DVLD_Project.Controls.PersonDetailsWithFilter();
             this.tcApplicationInfo.SuspendLayout();
             this.tcPersonalInfo.SuspendLayout();
             this.tbcDrivingLicenseApplicationIfno.SuspendLayout();
@@ -203,6 +203,14 @@
             this.btnNext.Text = "Next";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // personDetailsWithFilter1
+            // 
+            this.personDetailsWithFilter1.FilterEnabled = true;
+            this.personDetailsWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.personDetailsWithFilter1.Name = "personDetailsWithFilter1";
+            this.personDetailsWithFilter1.Size = new System.Drawing.Size(1033, 631);
+            this.personDetailsWithFilter1.TabIndex = 1;
+            // 
             // tbcDrivingLicenseApplicationIfno
             // 
             this.tbcDrivingLicenseApplicationIfno.Controls.Add(this.tcPersonalInfo);
@@ -246,6 +254,7 @@
             this.btnSave.Size = new System.Drawing.Size(170, 37);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -261,14 +270,6 @@
             this.btnClose.Size = new System.Drawing.Size(170, 37);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
-            // 
-            // personDetailsWithFilter1
-            // 
-            this.personDetailsWithFilter1.FilterEnabled = true;
-            this.personDetailsWithFilter1.Location = new System.Drawing.Point(3, 3);
-            this.personDetailsWithFilter1.Name = "personDetailsWithFilter1";
-            this.personDetailsWithFilter1.Size = new System.Drawing.Size(1033, 631);
-            this.personDetailsWithFilter1.TabIndex = 1;
             // 
             // frmNewLocalDrivingLicenseApplication
             // 

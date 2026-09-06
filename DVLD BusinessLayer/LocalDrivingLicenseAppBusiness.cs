@@ -32,15 +32,29 @@ namespace DVLD_BusinessLayer
             return LocalDrivingLicenseDataAccess.UpdateLocalDrivingApplication(application);
         }
 
-        public static bool save(LocalDrivingLicenseApplication application)
+        public static bool Save(LocalDrivingLicenseApplication LdApplication)
         {
-            if(application.LocalDrivingLicenseApplicationID==-1)
+            //call the application  save method to save the application to the database
+
+            ApplicationModel application = new ApplicationModel(-1, LdApplication.PersonID, LdApplication.Person, LdApplication.ApplicationDate, LdApplication.ApplicationTypeID, LdApplication.applicationType
+                , LdApplication.ApplicationStatus, LdApplication.LastStatusDate, LdApplication.PaidFees, LdApplication.UserID);
+
+            if (ApplicationBusiness.Save(application))
             {
-                return AddNewLocalDrivingApplication(application);
+                LdApplication.ApplicationID = application.ApplicationID;
+                if (LdApplication.LocalDrivingLicenseApplicationID == -1)
+                {
+                    return AddNewLocalDrivingApplication(LdApplication);
+                }
+                else
+                {
+                    return UpdateLocalDrivingApplication(LdApplication);
+                }
+
             }
             else
             {
-                return UpdateLocalDrivingApplication(application);
+                return false;
             }
         }
 

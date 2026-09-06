@@ -114,13 +114,11 @@ namespace DVLD_Project
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             if (!this.ValidateChildren())
             {
                 MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-
             }
             fillUserWithLoginInfo();
 
