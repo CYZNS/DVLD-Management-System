@@ -138,7 +138,6 @@ namespace DVLD_DataAccessLayer
             }
             return NewApplicationID;
         }
-
         public static bool UpdateApplication(ApplicationModel application)
         {
             int rowsAffected = 0;
@@ -182,5 +181,65 @@ namespace DVLD_DataAccessLayer
             // Returns true if at least one row was updated
             return (rowsAffected > 0);
         }
+
+        //public static bool DeleteApplication(int applicationID)
+        //{
+        //    int rowsAffected = 0;
+        //    string query = "DELETE FROM Applications WHERE ApplicationID = @ApplicationID;";
+        //    using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+        //    using (SqlCommand command = new SqlCommand(query, connection))
+        //    {
+        //        command.Parameters.AddWithValue("@ApplicationID", applicationID);
+        //        try
+        //        {
+        //            connection.Open();
+        //            rowsAffected = command.ExecuteNonQuery();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine("Error:" + ex.Message);
+        //            return false;
+        //        }
+        //    }
+        //    // Returns true if at least one row was deleted
+        //    return (rowsAffected > 0);
+        //}
+
+
+        public static int GetActiveApplication(int PersonID,int LicenseClassID,int ApplicationTypeID)
+        {
+            int ApplicationID = -1;
+            string query = @"select * from Applications AP inner join LocalDrivingLicenseApplications LD 
+                            on AP.ApplicationID = LD.ApplicationID 
+                            where LicenseClassID = @LicenseClassID  and 
+                            Ap.ApplicantPersonID = @PersonID and 
+                            ApplicationStatus =1 and
+                            ApplicationTypeID = @ApplicationTypeID;";
+
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@PersonID", PersonID);
+                command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        ApplicationID = Convert.ToInt32(result);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error:" + ex.Message);
+                }
+            }
+            return ApplicationID;
+        }
+
     }
 }

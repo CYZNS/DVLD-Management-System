@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -154,8 +155,26 @@ namespace DVLD_Project.Driving_License
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!this.ValidateChildren())
+            {
+                MessageBox.Show("Some fileds are not valid!, put the mouse over the red icon(s) to see the error",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             fillLocalDrivingApplicationWithFormData();
-            if(LocalDrivingLicenseAppBusiness.Save(_LDApplication))
+
+            int ApplicationID = ApplicationBusiness.GetActiveApplication( _LDApplication.PersonID,_LDApplication.LicenseClassID,_LDApplication.ApplicationTypeID);
+
+            //missing this: public static int GetActiveLicenseIDByPersonID(int PersonID , int LicenseClassID)
+            // I should make the license table and layers
+
+            if (ApplicationID != -1 && _Mode == enmode.AddNewLocalDrivingApp)
+            {
+                MessageBox.Show("The person already has an active application with ID = " + ApplicationID, "Active Application Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (LocalDrivingLicenseAppBusiness.Save(_LDApplication))
             {
                 changeFormModeToUpdateMode();
                 MessageBox.Show("Local Driving License Application Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

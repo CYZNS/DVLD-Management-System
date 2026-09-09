@@ -41,5 +41,10 @@ namespace DVLD_BusinessLayer
                 return UpdateApplication(application);
             }
         }
+
+        public static int GetActiveApplication(int PersonID, int LicenseClassID, int ApplicationTypeID)
+        {
+            return ApplicationDataAccess.GetActiveApplication(PersonID, LicenseClassID, ApplicationTypeID);
+        }
     }
 }
