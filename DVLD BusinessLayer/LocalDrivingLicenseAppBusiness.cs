@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,6 +58,17 @@ namespace DVLD_BusinessLayer
                 return false;
             }
         }
+        public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
+        {
+            // get the applicationID for the deleted local driving license application so we can delete the Application record 
+            int baseApplicationID = LocalDrivingLicenseDataAccess.DeleteAndGetBaseApplicationID(LocalDrivingLicenseApplicationID);
 
+            if (baseApplicationID == -1)
+            {
+                return false;
+            }
+
+            return ApplicationBusiness.DeleteApplication(baseApplicationID);
+        }
     }
 }

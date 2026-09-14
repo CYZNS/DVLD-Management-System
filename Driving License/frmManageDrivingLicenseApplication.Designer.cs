@@ -46,6 +46,7 @@
             this.editLocalDrivingApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.DeleteStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddLocalDrivingApplication)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingApplications)).BeginInit();
             this.guna2ContextMenuStrip1.SuspendLayout();
@@ -253,7 +254,8 @@
             this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editLocalDrivingApplicationToolStripMenuItem,
-            this.cancelToolStripMenuItem});
+            this.cancelToolStripMenuItem,
+            this.DeleteStripMenuItem});
             this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
             this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
@@ -264,19 +266,19 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(121, 52);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(211, 104);
             // 
             // editLocalDrivingApplicationToolStripMenuItem
             // 
             this.editLocalDrivingApplicationToolStripMenuItem.Name = "editLocalDrivingApplicationToolStripMenuItem";
-            this.editLocalDrivingApplicationToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.editLocalDrivingApplicationToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.editLocalDrivingApplicationToolStripMenuItem.Text = "edit";
             this.editLocalDrivingApplicationToolStripMenuItem.Click += new System.EventHandler(this.editLocalDrivingApplicationToolStripMenuItem_Click);
             // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.cancelToolStripMenuItem.Text = "cancel";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
@@ -290,6 +292,13 @@
             this.label1.Size = new System.Drawing.Size(1130, 81);
             this.label1.TabIndex = 19;
             this.label1.Text = "Manage Driving License Applications";
+            // 
+            // DeleteStripMenuItem
+            // 
+            this.DeleteStripMenuItem.Name = "DeleteStripMenuItem";
+            this.DeleteStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.DeleteStripMenuItem.Text = "Delete";
+            this.DeleteStripMenuItem.Click += new System.EventHandler(this.DeleteStripMenuItem_Click);
             // 
             // frmManageLocalDrivingLicenseApplications
             // 
@@ -332,5 +341,6 @@
         private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editLocalDrivingApplicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DeleteStripMenuItem;
     }
 }

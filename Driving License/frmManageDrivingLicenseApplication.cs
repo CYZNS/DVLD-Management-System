@@ -97,10 +97,28 @@ namespace DVLD_Project.Driving_License
         {
             showAddLocalDrivingLicenseApplicationForm();
         }
-
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+        }
+        private void DeleteStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvLocalDrivingApplications.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this Local Driving License Application?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+                    if (LocalDrivingLicenseAppBusiness.DeleteLocalDrivingLicenseApplication(selectedID))
+                    {
+                        MessageBox.Show("Local Driving License Application deleted successfully");
+                        refreshForm();
+                    }
+                    else
+                        MessageBox.Show("Error deleting the Local Driving License Application");
+                }
+            }
 
         }
     }

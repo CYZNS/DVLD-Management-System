@@ -182,29 +182,31 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
         }
 
-        //public static bool DeleteApplication(int applicationID)
-        //{
-        //    int rowsAffected = 0;
-        //    string query = "DELETE FROM Applications WHERE ApplicationID = @ApplicationID;";
-        //    using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
-        //    using (SqlCommand command = new SqlCommand(query, connection))
-        //    {
-        //        command.Parameters.AddWithValue("@ApplicationID", applicationID);
-        //        try
-        //        {
-        //            connection.Open();
-        //            rowsAffected = command.ExecuteNonQuery();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine("Error:" + ex.Message);
-        //            return false;
-        //        }
-        //    }
-        //    // Returns true if at least one row was deleted
-        //    return (rowsAffected > 0);
-        //}
+        public static bool DeleteApplication(int ApplicationID)
+        {
+            int rowsAffected = 0;
+            string query = "DELETE Applications WHERE ApplicationID = @ApplicationID";
 
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error:" + ex.Message);
+                }
+            }
+            return rowsAffected > 0;
+
+
+        }
 
         public static int GetActiveApplication(int PersonID,int LicenseClassID,int ApplicationTypeID)
         {

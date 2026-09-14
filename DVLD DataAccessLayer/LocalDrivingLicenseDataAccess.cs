@@ -143,6 +143,37 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
         }
 
+        public static int DeleteAndGetBaseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            int deletedApplicationID = -1;
 
+            string query = @"DELETE LocalDrivingLicenseApplications
+                     OUTPUT DELETED.ApplicationID
+                     WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+                try
+                {
+                    connection.Open();
+                    // ExecuteScalar grabs the OUTPUT value
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out int ApplicationID))
+                    {
+                        deletedApplicationID = ApplicationID;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return deletedApplicationID;
+        }
     }
 }
