@@ -44,7 +44,9 @@
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ApplicationType.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="Drivers.cs" />
     <Compile Include="LicenseClass.cs" />
+    <Compile Include="Licenses.cs" />
     <Compile Include="LocalDrivingLicenseApplication.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

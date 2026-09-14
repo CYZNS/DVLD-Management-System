@@ -97,5 +97,11 @@ namespace DVLD_Project.Driving_License
         {
             showAddLocalDrivingLicenseApplicationForm();
         }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+        }
     }
 }

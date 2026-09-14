@@ -122,23 +122,6 @@ namespace DVLD_Project.Driving_License
 
             tbcDrivingLicenseApplicationIfno.SelectedIndex = 1;
         }
-        private void fillLocalDrivingApplicationWithFormData()
-        {
-            _LDApplication.PersonID = personDetailsWithFilter1.personID;
-            _LDApplication.Person = PeopleBusiness.FindPerson(_LDApplication.PersonID);
-            if(_Mode == enmode.AddNewLocalDrivingApp) // if the mode is update , I want to keep the original application date and only change the last status update
-            {
-                _LDApplication.ApplicationDate = DateTime.Now;
-            }
-            _LDApplication.ApplicationTypeID = 1;
-            _LDApplication.applicationType =applicationType;
-            _LDApplication.ApplicationStatus = 1;
-            _LDApplication.LastStatusDate = DateTime.Now;
-            _LDApplication.PaidFees = _LDApplication.applicationType.ApplicationFees;
-            _LDApplication.UserID = clsGlobalSettings.currentUser.UserID;
-            _LDApplication.LicenseClassID = (int)cbLicenseClasses.SelectedValue;
-
-        }
         private void changeFormModeToUpdateMode()
         {
             this.Text = "Update Local Driving License Application";
@@ -153,6 +136,23 @@ namespace DVLD_Project.Driving_License
 
 
         }
+
+        private void fillLocalDrivingApplicationWithFormData()
+        {
+            _LDApplication.PersonID = personDetailsWithFilter1.personID;
+            if(_Mode == enmode.AddNewLocalDrivingApp) // if the mode is update , I want to keep the original application date and only change the last status update
+            {
+                _LDApplication.ApplicationDate = DateTime.Now;
+            }
+            _LDApplication.ApplicationTypeID = 1;
+            _LDApplication.applicationType =applicationType;
+            _LDApplication.ApplicationStatus = 1;
+            _LDApplication.LastStatusDate = DateTime.Now;
+            _LDApplication.PaidFees = _LDApplication.applicationType.ApplicationFees;
+            _LDApplication.UserID = clsGlobalSettings.currentUser.UserID;
+            _LDApplication.LicenseClassID = (int)cbLicenseClasses.SelectedValue;
+
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -165,8 +165,6 @@ namespace DVLD_Project.Driving_License
 
             int ApplicationID = ApplicationBusiness.GetActiveApplication( _LDApplication.PersonID,_LDApplication.LicenseClassID,_LDApplication.ApplicationTypeID);
 
-            //missing this: public static int GetActiveLicenseIDByPersonID(int PersonID , int LicenseClassID)
-            // I should make the license table and layers
 
             if (ApplicationID != -1 && _Mode == enmode.AddNewLocalDrivingApp)
             {
@@ -174,6 +172,12 @@ namespace DVLD_Project.Driving_License
                 return;
             }
 
+            int LicenseID = LicenseBusiness.GetActiveLicenseIDByPersonID(_LDApplication.PersonID, _LDApplication.LicenseClassID);
+            if (LicenseID != -1 )
+            {
+                MessageBox.Show("The person already has an active license with ID = " + LicenseID, "Active License Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (LocalDrivingLicenseAppBusiness.Save(_LDApplication))
             {
                 changeFormModeToUpdateMode();
@@ -185,5 +189,6 @@ namespace DVLD_Project.Driving_License
                 MessageBox.Show("Error Saving Local Driving License Application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

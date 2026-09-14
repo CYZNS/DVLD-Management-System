@@ -209,7 +209,7 @@ namespace DVLD_DataAccessLayer
         public static int GetActiveApplication(int PersonID,int LicenseClassID,int ApplicationTypeID)
         {
             int ApplicationID = -1;
-            string query = @"select * from Applications AP inner join LocalDrivingLicenseApplications LD 
+            string query = @"select AP.ApplicationID from Applications AP inner join LocalDrivingLicenseApplications LD 
                             on AP.ApplicationID = LD.ApplicationID 
                             where LicenseClassID = @LicenseClassID  and 
                             Ap.ApplicantPersonID = @PersonID and 
