@@ -101,6 +101,19 @@ namespace DVLD_Project.Driving_License
         {
             int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
 
+            
+                DialogResult result = MessageBox.Show("Are you sure you want to cancel this Local Driving License Application?", "Confirm Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    if (LocalDrivingLicenseAppBusiness.Cancel(selectedID))
+                    {
+                        MessageBox.Show("Local Driving License Application canceled successfully");
+                        refreshForm();
+                    }
+                    else
+                        MessageBox.Show("Error canceling the Local Driving License Application");
+                }
+           
         }
         private void DeleteStripMenuItem_Click(object sender, EventArgs e)
         {

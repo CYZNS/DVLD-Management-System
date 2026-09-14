@@ -70,5 +70,21 @@ namespace DVLD_BusinessLayer
 
             return ApplicationBusiness.DeleteApplication(baseApplicationID);
         }
+        public static int GetBaseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            return LocalDrivingLicenseDataAccess.GetBaseApplicationID(LocalDrivingLicenseApplicationID);
+        }
+        public static bool Cancel(int LocalDrivingLicenseApplicationID)
+        {
+            int BaseAppID = LocalDrivingLicenseDataAccess.GetBaseApplicationID(LocalDrivingLicenseApplicationID);
+
+            if (BaseAppID == -1)
+            {
+                return false;
+            }
+
+            return ApplicationBusiness.Cancel(BaseAppID);
+        }
+
     }
 }

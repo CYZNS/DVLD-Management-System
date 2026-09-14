@@ -142,7 +142,6 @@ namespace DVLD_DataAccessLayer
             // Returns true if at least one row was updated
             return (rowsAffected > 0);
         }
-
         public static int DeleteAndGetBaseApplicationID(int LocalDrivingLicenseApplicationID)
         {
             int deletedApplicationID = -1;
@@ -175,5 +174,31 @@ namespace DVLD_DataAccessLayer
 
             return deletedApplicationID;
         }
+        public static int GetBaseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            int baseApplicationID = -1;
+            string query = "SELECT ApplicationID FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalID";
+
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@LocalID", LocalDrivingLicenseApplicationID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int ApplicationID))
+                    {
+                        baseApplicationID = ApplicationID;
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return baseApplicationID;
+        }
+       
     }
 }

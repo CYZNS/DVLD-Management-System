@@ -49,6 +49,14 @@ namespace DVLD_BusinessLayer
         {
             return ApplicationDataAccess.DeleteApplication(ApplicationID);
         }
+        public static bool UpdateStatus(int ApplicationID, int newStatus)
+        {
+            return ApplicationDataAccess.UpdateStatus(ApplicationID, newStatus);
+        }
+        public static bool Cancel(int ApplicationID)
+        {
+            return UpdateStatus(ApplicationID, 2); 
+        }
 
     }
 }

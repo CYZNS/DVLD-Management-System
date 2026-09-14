@@ -181,7 +181,6 @@ namespace DVLD_DataAccessLayer
             // Returns true if at least one row was updated
             return (rowsAffected > 0);
         }
-
         public static bool DeleteApplication(int ApplicationID)
         {
             int rowsAffected = 0;
@@ -207,7 +206,6 @@ namespace DVLD_DataAccessLayer
 
 
         }
-
         public static int GetActiveApplication(int PersonID,int LicenseClassID,int ApplicationTypeID)
         {
             int ApplicationID = -1;
@@ -242,6 +240,32 @@ namespace DVLD_DataAccessLayer
             }
             return ApplicationID;
         }
+        public static bool UpdateStatus(int ApplicationID, int newStatus)
+        {
+            int rowsAffected = 0;
+            string query = @"UPDATE Applications 
+                             SET ApplicationStatus = @newStatus, 
+                             LastStatusDate = GETDATE()
+                             WHERE ApplicationID = @ApplicationID and ApplicationStatus =1;";
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                command.Parameters.AddWithValue("@newStatus", newStatus);
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error:" + ex.Message);
+                    return false;
+                }
+            }
+            return rowsAffected > 0;
+        }
+
 
     }
 }
