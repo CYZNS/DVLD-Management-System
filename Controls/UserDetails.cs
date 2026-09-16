@@ -28,5 +28,6 @@ namespace DVLD_Project.Controls
             lbIsActive.Text = (user.IsActive == true) ? "YES" : "NO";
         }
 
+        
     }
 }

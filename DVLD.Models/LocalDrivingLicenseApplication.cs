@@ -9,9 +9,7 @@ namespace DVLD.Models
     public class LocalDrivingLicenseApplication :ApplicationModel
     {
         public int LocalDrivingLicenseApplicationID { get; set; }
-        public int LicenseClassID { get; set; }
-        //public LicenseClass licenseClass { get; set; } if I needed it I will uncomment it 
-
+        public int LicenseClassID { get; set; }  
         public LocalDrivingLicenseApplication(int applicationID, int personID,People person, DateTime applicationDate,
            int applicationTypeID, ApplicationType applicationType, int applicationStatus,
            DateTime lastStatusDate, decimal paidFees, int userID,int localDrivingLicenseApplicationID,

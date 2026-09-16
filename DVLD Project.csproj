@@ -64,6 +64,18 @@
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
     <Compile Include="clsGlobalSettings.cs" />
+    <Compile Include="Controls\DrivingLicenseApplicationDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DrivingLicenseApplicationDetails.Designer.cs">
+      <DependentUpon>DrivingLicenseApplicationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ApplicationDetailsBaiscInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ApplicationDetailsBaiscInfo.Designer.cs">
+      <DependentUpon>ApplicationDetailsBaiscInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PersonDetailsWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +93,12 @@
     </Compile>
     <Compile Include="Applications\frmManageApplicationTypes.Designer.cs">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driving License\frmLDAppDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License\frmLDAppDetails.Designer.cs">
+      <DependentUpon>frmLDAppDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Driving License\frmManageDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -171,6 +189,12 @@
     <EmbeddedResource Include="Applications\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ApplicationDetailsBaiscInfo.resx">
+      <DependentUpon>ApplicationDetailsBaiscInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DrivingLicenseApplicationDetails.resx">
+      <DependentUpon>DrivingLicenseApplicationDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PersonDetailsWithFilter.resx">
       <DependentUpon>PersonDetailsWithFilter.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License\frmLDAppDetails.resx">
+      <DependentUpon>frmLDAppDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License\frmManageDrivingLicenseApplication.resx">
       <DependentUpon>frmManageDrivingLicenseApplication.cs</DependentUpon>

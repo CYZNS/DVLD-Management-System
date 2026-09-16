@@ -50,7 +50,14 @@ namespace DVLD_DataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            return new LicenseClass(LicenseClassID, reader["ClassName"] as string ?? "", reader["ClassDescription"] as string ?? "", (int)reader["MinimumAllowedAge"], (int)reader["DefaultValidityLength"], (decimal)reader["ClassFees"]);
+                            return new LicenseClass(
+                                LicenseClassID,
+                                reader["ClassName"] as string ?? "",
+                                reader["ClassDescription"] as string ?? "",
+                                Convert.ToInt32(reader["MinimumAllowedAge"]),
+                                Convert.ToInt32(reader["DefaultValidityLength"]),
+                                Convert.ToDecimal(reader["ClassFees"]) 
+                            );
                         }
                     }
                 }

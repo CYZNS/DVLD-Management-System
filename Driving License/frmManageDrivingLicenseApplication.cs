@@ -134,5 +134,15 @@ namespace DVLD_Project.Driving_License
             }
 
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            int passedTests = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["PassedTestCount"].Value);
+            frmLDAppDetails form = new frmLDAppDetails(selectedID, passedTests);
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
+
+        }
     }
 }

@@ -45,8 +45,9 @@
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.editLocalDrivingApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.DeleteStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddLocalDrivingApplication)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingApplications)).BeginInit();
             this.guna2ContextMenuStrip1.SuspendLayout();
@@ -255,7 +256,8 @@
             this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editLocalDrivingApplicationToolStripMenuItem,
             this.cancelToolStripMenuItem,
-            this.DeleteStripMenuItem});
+            this.DeleteStripMenuItem,
+            this.showDetailsToolStripMenuItem});
             this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
             this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
@@ -266,7 +268,7 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(211, 104);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(211, 128);
             // 
             // editLocalDrivingApplicationToolStripMenuItem
             // 
@@ -282,6 +284,13 @@
             this.cancelToolStripMenuItem.Text = "cancel";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
+            // DeleteStripMenuItem
+            // 
+            this.DeleteStripMenuItem.Name = "DeleteStripMenuItem";
+            this.DeleteStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.DeleteStripMenuItem.Text = "Delete";
+            this.DeleteStripMenuItem.Click += new System.EventHandler(this.DeleteStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -293,12 +302,12 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Manage Driving License Applications";
             // 
-            // DeleteStripMenuItem
+            // showDetailsToolStripMenuItem
             // 
-            this.DeleteStripMenuItem.Name = "DeleteStripMenuItem";
-            this.DeleteStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.DeleteStripMenuItem.Text = "Delete";
-            this.DeleteStripMenuItem.Click += new System.EventHandler(this.DeleteStripMenuItem_Click);
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.showDetailsToolStripMenuItem.Text = "show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // frmManageLocalDrivingLicenseApplications
             // 
@@ -342,5 +351,6 @@
         private System.Windows.Forms.ToolStripMenuItem editLocalDrivingApplicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
     }
 }

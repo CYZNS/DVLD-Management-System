@@ -22,6 +22,10 @@ namespace DVLD.Models
         public string Email { get; set; }
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
+        public string FullName
+        {
+            get { return $"{FirstName} {SecondName} {ThirdName} {LastName}"; }
+        }
 
         public People(int personID, string nationalID, string firstName, string secondName, string thirdName,
             string lastName, DateTime dateOfBirth, byte gender, string address, string phone, string email,
