@@ -25,14 +25,14 @@ namespace DVLD_Project.Controls
             if (application != null)
             {
                 lbApplicationID.Text = application.ApplicationID.ToString();
-                lbStatus.Text = application.ApplicationStatus.ToString();
+                lbStatus.Text = application.ApplicationStatusString;
                 lbFees.Text = application.PaidFees.ToString("C");
                 lbType.Text = application.applicationType.ApplicationTitle;
                 lbApplicant.Text = application.Person.FullName;
                 lbDateCreated.Text = application.ApplicationDate.ToString("dd/MM/yyyy");
                 lbStatusDate.Text = application.LastStatusDate.ToString("dd/MM/yyyy");
                 User user = UserBusiness.FindUser(application.UserID);
-                lbUser.Text = user != null ? user.Person.FullName : "Unknown User";
+                lbUser.Text = user != null ? user.UserName : "Unknown User";
 
                 _PersonID = application.PersonID;
             }

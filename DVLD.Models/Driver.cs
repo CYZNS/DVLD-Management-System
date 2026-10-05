@@ -6,25 +6,32 @@ using System.Threading.Tasks;
 
 namespace DVLD.Models
 {
-    public class Drivers
+    public class Driver
     {
         public int DriverID { get; set; }
         public int PersonID { get; set; }
-        People person;
+        public People personInfo { get; set; }
         public int UserID { get; set; }
         public DateTime CreatedDate { get; set; }
-        public Drivers()
+        public Driver()
         {
             DriverID = -1;
             PersonID = -1;
             UserID = -1;
             CreatedDate = DateTime.Now;
         }
-        public Drivers(int driverID, int personID,People person, int userID, DateTime createdDate)
+        public Driver(int driverID, int personID,People personInfo,int userID, DateTime createdDate) // personInfo will be filled in the business layer
         {
             DriverID = driverID;
             PersonID = personID;
-            this.person = person;
+            UserID = userID;
+            CreatedDate = createdDate;
+            this.personInfo = personInfo;
+        }
+        public Driver(int driverID, int personID, int userID, DateTime createdDate) // personInfo will be filled in the business layer
+        {
+            DriverID = driverID;
+            PersonID = personID;
             UserID = userID;
             CreatedDate = createdDate;
         }

@@ -182,6 +182,7 @@ namespace DVLD_Project.Driving_License
             {
                 changeFormModeToUpdateMode();
                 MessageBox.Show("Local Driving License Application Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK; // only refresh the grid when this dialog result is ok ( when the application is really saved)
                 this.Close();
             }
             else

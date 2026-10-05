@@ -46,12 +46,12 @@ namespace DVLD_Project
         {
             if (currentPerson.Gender == 0)
             {
-                lbGender.Text = "Male";
+                
                 pbProfilePicture.Image = Properties.Resources.gender_male;
             }
             else
             {
-                lbGender.Text = "Female";
+                
                 pbProfilePicture.Image = Properties.Resources.gender_Female;
 
             }
@@ -75,6 +75,7 @@ namespace DVLD_Project
             string countryName = CountriesBusiness.findCountry(person.NationalityCountryID).CountryName;
             lbCountry.Text = countryName;
             lbAddress.Text = person.Address;
+            lbGender.Text = person.GenderName;
 
             loadPersonImage();
 

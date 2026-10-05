@@ -93,5 +93,10 @@ namespace DVLD_Project
             OpenChildForm(new frmManageLocalDrivingLicenseApplications());
 
         }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmShowDrivers());
+        }
     }
 }

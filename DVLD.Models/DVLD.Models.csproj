@@ -44,12 +44,14 @@
     <Compile Include="ApplicationModel.cs" />
     <Compile Include="ApplicationType.cs" />
     <Compile Include="Country.cs" />
-    <Compile Include="Drivers.cs" />
+    <Compile Include="Driver.cs" />
     <Compile Include="LicenseClass.cs" />
     <Compile Include="Licenses.cs" />
     <Compile Include="LocalDrivingLicenseApplication.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="TestAppointment.cs" />
     <Compile Include="TestType.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

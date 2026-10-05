@@ -11,7 +11,6 @@ namespace DVLD_DataAccessLayer
 {
     public class ApplicationDataAccess
     {   
-
         public static DataTable GetAllApplications()
         {
             DataTable dt = new DataTable();
@@ -266,6 +265,6 @@ namespace DVLD_DataAccessLayer
             return rowsAffected > 0;
         }
 
-
+        
     }
 }

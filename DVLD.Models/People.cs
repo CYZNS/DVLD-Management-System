@@ -17,6 +17,14 @@ namespace DVLD.Models
         public DateTime DateOfBirth { get; set; }
         // 0 for male , 1 for female , 2 unknown ( maybe enum here) 
         public byte Gender { get; set; }
+        public string GenderName
+        {
+            get
+            {
+                return (Gender == 0) ? "Male" : "Female";
+            }
+            
+        }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

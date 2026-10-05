@@ -16,6 +16,23 @@ namespace DVLD.Models
         public int ApplicationTypeID { get; set; }
         public ApplicationType applicationType { get; set; }
         public int ApplicationStatus { get; set; }
+        public string ApplicationStatusString
+        {
+            get
+            {
+                switch (ApplicationStatus)
+                {
+                    case 1:
+                        return "NEW";
+                    case 2:
+                        return "Cancelled";
+                    case 3:
+                        return "Completed";
+                    default:
+                        return "Unknown";
+                }
+            }
+        }
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
         public int UserID { get; set; }

@@ -24,7 +24,7 @@ namespace DVLD_Project.Controls
         {
             if (DLapplication != null)
             {
-                lbDLAppID.Text = DLapplication.ApplicationID.ToString();
+                lbDLAppID.Text = DLapplication.LocalDrivingLicenseApplicationID.ToString();
                 LicenseClass licenseClass = LicenseClassBusiness.FindLicenseClass(DLapplication.LicenseClassID);
                 lbLicenseClass.Text = licenseClass.ClassName;
                 lbPassedTests.Text = passedTests.ToString();

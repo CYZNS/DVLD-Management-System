@@ -45,11 +45,15 @@
     <Compile Include="ApplicationTypeDataAccess.cs" />
     <Compile Include="Countries_DataAccess.cs" />
     <Compile Include="DataAccessSettings.cs" />
+    <Compile Include="DetainedLicenseDataAccess.cs" />
+    <Compile Include="DriverDataAccess.cs" />
     <Compile Include="LicensesDataAccess.cs" />
     <Compile Include="LocalDrivingLicenseDataAccess.cs" />
     <Compile Include="LicenseClassDataAccess.cs" />
     <Compile Include="People_DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestAppointmentDataAccess.cs" />
+    <Compile Include="TestDataAccess.cs" />
     <Compile Include="TestTypesDataAccess.cs" />
     <Compile Include="UsersDataAccess.cs" />
   </ItemGroup>
