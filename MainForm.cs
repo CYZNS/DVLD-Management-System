@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_BusinessLayer;
 using DVLD_Project.Driving_License;
+using DVLD_Project.InternationalLicense;
 using DVLD_Project.Tests.TestTypes;
 using DVLD_Project.Users;
 
@@ -97,6 +98,11 @@ namespace DVLD_Project
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmShowDrivers());
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmNewInternationalLicense());
         }
     }
 }

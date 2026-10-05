@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccessLayer
 {
@@ -119,6 +120,37 @@ namespace DVLD_DataAccessLayer
 
             return newLicenseID;
         }
+        private static Licenses BuildLicenseObject(SqlDataReader reader)
+        {
+            int licenseClassID = (int)reader["LicenseClass"];
+
+            LicenseClass licenseClass = new LicenseClass(
+                licenseClassID,
+                reader["ClassName"] as string ?? "",
+                reader["ClassDescription"] as string ?? "",
+                Convert.ToInt32(reader["MinimumAllowedAge"]),
+                Convert.ToInt32(reader["DefaultValidityLength"]),
+                Convert.ToDecimal(reader["ClassFees"])
+                );
+
+            string notes = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : "";
+
+
+            return new Licenses(
+                (int)reader["LicenseID"],
+                (int)reader["ApplicationID"],
+                (int)reader["DriverID"],
+                licenseClassID,
+                licenseClass,
+                (DateTime)reader["IssueDate"],
+                (DateTime)reader["ExpirationDate"],
+                notes,
+                Convert.ToDecimal(reader["PaidFees"]),
+                (bool)reader["IsActive"],
+                Convert.ToInt32(reader["IssueReason"]),
+                Convert.ToInt32(reader["CreatedByUserID"])
+                );
+        }
         public static Licenses FindLicenseByLicenseID(int licenseID)
         {
             string query = @"SELECT Licenses.*, 
@@ -143,32 +175,7 @@ namespace DVLD_DataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            int licenseClassID = (int)reader["LicenseClassID"];
-
-                            LicenseClass licenseClass = new LicenseClass(
-                                licenseClassID,
-                                reader["ClassName"] as string ?? "",
-                                reader["ClassDescription"] as string ?? "",
-                                (int)reader["MinimumAllowedAge"],
-                                (int)reader["DefaultValidityLength"],
-                                (decimal)reader["ClassFees"]
-                                );
-
-                            string notes = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : "";
-                            return new Licenses(
-                                licenseID,
-                                (int)reader["ApplicationID"],
-                                (int)reader["DriverID"],
-                                licenseClassID,
-                                licenseClass,
-                                (DateTime)reader["IssueDate"],
-                                (DateTime)reader["ExpirationDate"],
-                                notes,
-                                Convert.ToDecimal(reader["PaidFees"]),
-                                (bool)reader["IsActive"],
-                                (int)reader["IssueReason"],
-                                (int)reader["CreatedByUserID"]
-                                );
+                            return BuildLicenseObject(reader);
                         }
                     }
                 }
@@ -204,36 +211,7 @@ namespace DVLD_DataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            int licenseClassID = (int)reader["LicenseClass"];
-
-
-
-                            LicenseClass licenseClass = new LicenseClass(
-                                licenseClassID,
-                                reader["ClassName"] as string ?? "",
-                                reader["ClassDescription"] as string ?? "",
-                                Convert.ToInt32(reader["MinimumAllowedAge"]),
-                                Convert.ToInt32(reader["DefaultValidityLength"]),
-                                Convert.ToDecimal(reader["ClassFees"])
-                                );
-
-                            string notes = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : "";
-
-
-                            return new Licenses(
-                                (int)reader["LicenseID"],
-                                applicationID,
-                                (int)reader["DriverID"],
-                                licenseClassID,
-                                licenseClass,
-                                (DateTime)reader["IssueDate"],
-                                (DateTime)reader["ExpirationDate"],
-                                notes,
-                                Convert.ToDecimal(reader["PaidFees"]),
-                                (bool)reader["IsActive"],
-                                Convert.ToInt32(reader["IssueReason"]),
-                                Convert.ToInt32(reader["CreatedByUserID"])
-                                );
+                            return BuildLicenseObject(reader);
                         }
                     }
                 }
