@@ -120,6 +120,33 @@ namespace DVLD_DataAccessLayer
 
             return newLicenseID;
         }
+        public static bool UpdateLicenseStatus(int licenseID, bool isActive)
+        {
+            int rowsAffected = 0;
+
+            string query = @"UPDATE Licenses
+                     SET IsActive = @IsActive
+                     WHERE LicenseID = @LicenseID;";
+
+            using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@LicenseID", licenseID);
+                command.Parameters.AddWithValue("@IsActive", isActive);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return rowsAffected > 0;
+        }
         private static Licenses BuildLicenseObject(SqlDataReader reader)
         {
             int licenseClassID = (int)reader["LicenseClass"];

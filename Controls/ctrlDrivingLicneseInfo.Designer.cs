@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.gpLicenseInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.pbPersonImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lbIsDetained = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel19 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbExpirationDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -56,6 +55,7 @@
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbClassName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pbPersonImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.gpLicenseInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
@@ -98,20 +98,6 @@
             this.gpLicenseInfo.Size = new System.Drawing.Size(1368, 327);
             this.gpLicenseInfo.TabIndex = 2;
             this.gpLicenseInfo.Text = "Driver License Info";
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbPersonImage.Image = global::DVLD_Project.Properties.Resources.anonymous_man;
-            this.pbPersonImage.ImageRotate = 0F;
-            this.pbPersonImage.Location = new System.Drawing.Point(1097, 102);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(268, 203);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 26;
-            this.pbPersonImage.TabStop = false;
-            this.pbPersonImage.UseTransparentBackground = true;
             // 
             // lbIsDetained
             // 
@@ -372,6 +358,20 @@
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(61, 33);
             this.guna2HtmlLabel2.TabIndex = 0;
             this.guna2HtmlLabel2.Text = "Class:";
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BackColor = System.Drawing.Color.Transparent;
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbPersonImage.Image = global::DVLD_Project.Properties.Resources.anonymous_man;
+            this.pbPersonImage.ImageRotate = 0F;
+            this.pbPersonImage.Location = new System.Drawing.Point(1097, 102);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(268, 203);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 26;
+            this.pbPersonImage.TabStop = false;
+            this.pbPersonImage.UseTransparentBackground = true;
             // 
             // ctrlDrivingLicneseInfo
             // 

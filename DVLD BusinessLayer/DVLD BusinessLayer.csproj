@@ -46,6 +46,7 @@
     <Compile Include="CountriesBusiness.cs" />
     <Compile Include="DetainedLicenseBusiness.cs" />
     <Compile Include="DriverBusiness.cs" />
+    <Compile Include="InternationalLicenseBusiness.cs" />
     <Compile Include="LicenseBusiness.cs" />
     <Compile Include="LicenseClassBusiness.cs" />
     <Compile Include="LocalDrivingLicenseAppBusiness.cs" />

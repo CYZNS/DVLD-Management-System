@@ -28,11 +28,14 @@ namespace DVLD_Project
             }
             tbFilterBy.Visible = (cbFilterBy.Text != "None");
         }
-
-        private void frmShowDrivers_Load(object sender, EventArgs e)
+        private void RefreshForm()
         {
             dtDrivers = DriverBusiness.GetAllDrivers();
             dgvDrivers.DataSource = dtDrivers;
+        }
+        private void frmShowDrivers_Load(object sender, EventArgs e)
+        {
+            RefreshForm();
         }
 
         private void tbFilterBy_TextChanged(object sender, EventArgs e)

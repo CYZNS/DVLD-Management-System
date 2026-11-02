@@ -47,6 +47,7 @@
     <Compile Include="DataAccessSettings.cs" />
     <Compile Include="DetainedLicenseDataAccess.cs" />
     <Compile Include="DriverDataAccess.cs" />
+    <Compile Include="InternationalLicenseDataAccess.cs" />
     <Compile Include="LicensesDataAccess.cs" />
     <Compile Include="LocalDrivingLicenseDataAccess.cs" />
     <Compile Include="LicenseClassDataAccess.cs" />

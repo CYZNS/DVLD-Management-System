@@ -8,8 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_BusinessLayer;
+using DVLD_Project.Applications.Replacement_for_lost_or_damaged;
+using DVLD_Project.Detain_License;
 using DVLD_Project.Driving_License;
 using DVLD_Project.InternationalLicense;
+using DVLD_Project.RenewLocalDriving;
 using DVLD_Project.Tests.TestTypes;
 using DVLD_Project.Users;
 
@@ -103,6 +106,36 @@ namespace DVLD_Project
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmNewInternationalLicense());
+        }
+
+        private void internationalLicenseApplicationsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmManageInternationalLicenses());
+        }
+
+        private void renewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmRenewLicense());
+        }
+
+        private void replacementForToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmReplacementForLostOrDamaged());
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmDetainLicense());
+        }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmReleaseDetainedLicense());
+        }
+
+        private void manageDetainedLIcensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmManageDetainedLicenses());
         }
     }
 }

@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlDriverLicenseInfoWithFilter1 = new DVLD_Project.Controls.ctrlDriverLicenseInfoWithFilter();
-            this.gpDrivinglicenseApplication = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.gpApplicationBasicInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             this.lblLocalLicenseID = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblInternationalLicenseID = new System.Windows.Forms.Label();
@@ -49,7 +48,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnIssue = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.gpDrivinglicenseApplication.SuspendLayout();
+            this.ctrlDriverLicenseInfoWithFilter1 = new DVLD_Project.Controls.ctrlDriverLicenseInfoWithFilter();
+            this.lkShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.lkLicenseHistory = new System.Windows.Forms.LinkLabel();
+            this.gpApplicationBasicInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -63,40 +65,33 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "International License Application";
             // 
-            // ctrlDriverLicenseInfoWithFilter1
+            // gpApplicationBasicInfo
             // 
-            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(0, 76);
-            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1369, 443);
-            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 2;
-            // 
-            // gpDrivinglicenseApplication
-            // 
-            this.gpDrivinglicenseApplication.BorderRadius = 10;
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblLocalLicenseID);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label12);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblInternationalLicenseID);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label10);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblExpirationDate);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label8);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblIssueDate);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label6);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label2);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblCreatedByUser);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblFees);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label3);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblApplicationDate);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label5);
-            this.gpDrivinglicenseApplication.Controls.Add(this.lblApplicationID);
-            this.gpDrivinglicenseApplication.Controls.Add(this.label4);
-            this.gpDrivinglicenseApplication.CustomBorderColor = System.Drawing.Color.DodgerBlue;
-            this.gpDrivinglicenseApplication.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpDrivinglicenseApplication.ForeColor = System.Drawing.Color.Black;
-            this.gpDrivinglicenseApplication.Location = new System.Drawing.Point(0, 521);
-            this.gpDrivinglicenseApplication.Name = "gpDrivinglicenseApplication";
-            this.gpDrivinglicenseApplication.Size = new System.Drawing.Size(1369, 179);
-            this.gpDrivinglicenseApplication.TabIndex = 5;
-            this.gpDrivinglicenseApplication.Text = "Application Basic info";
+            this.gpApplicationBasicInfo.BorderRadius = 10;
+            this.gpApplicationBasicInfo.Controls.Add(this.lblLocalLicenseID);
+            this.gpApplicationBasicInfo.Controls.Add(this.label12);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblInternationalLicenseID);
+            this.gpApplicationBasicInfo.Controls.Add(this.label10);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblExpirationDate);
+            this.gpApplicationBasicInfo.Controls.Add(this.label8);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblIssueDate);
+            this.gpApplicationBasicInfo.Controls.Add(this.label6);
+            this.gpApplicationBasicInfo.Controls.Add(this.label2);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblCreatedByUser);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblFees);
+            this.gpApplicationBasicInfo.Controls.Add(this.label3);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblApplicationDate);
+            this.gpApplicationBasicInfo.Controls.Add(this.label5);
+            this.gpApplicationBasicInfo.Controls.Add(this.lblApplicationID);
+            this.gpApplicationBasicInfo.Controls.Add(this.label4);
+            this.gpApplicationBasicInfo.CustomBorderColor = System.Drawing.Color.DodgerBlue;
+            this.gpApplicationBasicInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpApplicationBasicInfo.ForeColor = System.Drawing.Color.Black;
+            this.gpApplicationBasicInfo.Location = new System.Drawing.Point(0, 521);
+            this.gpApplicationBasicInfo.Name = "gpApplicationBasicInfo";
+            this.gpApplicationBasicInfo.Size = new System.Drawing.Size(1369, 179);
+            this.gpApplicationBasicInfo.TabIndex = 5;
+            this.gpApplicationBasicInfo.Text = "Application Basic info";
             // 
             // lblLocalLicenseID
             // 
@@ -296,6 +291,7 @@
             this.btnIssue.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnIssue.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnIssue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnIssue.Enabled = false;
             this.btnIssue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnIssue.ForeColor = System.Drawing.Color.White;
             this.btnIssue.Location = new System.Drawing.Point(1039, 755);
@@ -303,6 +299,7 @@
             this.btnIssue.Size = new System.Drawing.Size(180, 45);
             this.btnIssue.TabIndex = 6;
             this.btnIssue.Text = "Issue";
+            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
             // btnClose
             // 
@@ -318,20 +315,54 @@
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             // 
+            // ctrlDriverLicenseInfoWithFilter1
+            // 
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(0, 76);
+            this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
+            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1369, 443);
+            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 2;
+            // 
+            // lkShowLicenseInfo
+            // 
+            this.lkShowLicenseInfo.AutoSize = true;
+            this.lkShowLicenseInfo.Enabled = false;
+            this.lkShowLicenseInfo.Location = new System.Drawing.Point(337, 745);
+            this.lkShowLicenseInfo.Name = "lkShowLicenseInfo";
+            this.lkShowLicenseInfo.Size = new System.Drawing.Size(114, 16);
+            this.lkShowLicenseInfo.TabIndex = 8;
+            this.lkShowLicenseInfo.TabStop = true;
+            this.lkShowLicenseInfo.Text = "Show License Info";
+            this.lkShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkShowLicenseInfo_LinkClicked);
+            // 
+            // lkLicenseHistory
+            // 
+            this.lkLicenseHistory.AutoSize = true;
+            this.lkLicenseHistory.Enabled = false;
+            this.lkLicenseHistory.Location = new System.Drawing.Point(142, 745);
+            this.lkLicenseHistory.Name = "lkLicenseHistory";
+            this.lkLicenseHistory.Size = new System.Drawing.Size(135, 16);
+            this.lkLicenseHistory.TabIndex = 9;
+            this.lkLicenseHistory.TabStop = true;
+            this.lkLicenseHistory.Text = "Show License History";
+            this.lkLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkLicenseHistory_LinkClicked);
+            // 
             // frmNewInternationalLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1369, 823);
+            this.Controls.Add(this.lkLicenseHistory);
+            this.Controls.Add(this.lkShowLicenseInfo);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnIssue);
-            this.Controls.Add(this.gpDrivinglicenseApplication);
+            this.Controls.Add(this.gpApplicationBasicInfo);
             this.Controls.Add(this.ctrlDriverLicenseInfoWithFilter1);
             this.Controls.Add(this.label1);
             this.Name = "frmNewInternationalLicense";
             this.Text = "frmNewInternationalLicense";
-            this.gpDrivinglicenseApplication.ResumeLayout(false);
-            this.gpDrivinglicenseApplication.PerformLayout();
+            this.Load += new System.EventHandler(this.frmNewInternationalLicense_Load);
+            this.gpApplicationBasicInfo.ResumeLayout(false);
+            this.gpApplicationBasicInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +372,7 @@
 
         private System.Windows.Forms.Label label1;
         private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoWithFilter1;
-        private Guna.UI2.WinForms.Guna2GroupBox gpDrivinglicenseApplication;
+        private Guna.UI2.WinForms.Guna2GroupBox gpApplicationBasicInfo;
         private System.Windows.Forms.Label lblLocalLicenseID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblInternationalLicenseID;
@@ -360,5 +391,7 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Button btnIssue;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private System.Windows.Forms.LinkLabel lkShowLicenseInfo;
+        private System.Windows.Forms.LinkLabel lkLicenseHistory;
     }
 }

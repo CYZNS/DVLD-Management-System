@@ -138,7 +138,6 @@ namespace DVLD_Project
                
             }
         }
-
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int selectedID = (int)dgvPeople.CurrentRow.Cells["PersonID"].Value;

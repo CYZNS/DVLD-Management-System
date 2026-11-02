@@ -14,16 +14,23 @@ namespace DVLD_Project.License
 {
     public partial class frmShowLicense : Form
     {
-        int _LocalDrivingApplicationID = -1;
-        public frmShowLicense(int localDrivingApplicationID)
+       private readonly bool byLicenseID = false;
+
+       private readonly int _ID = -1;
+        public frmShowLicense(int id,bool byLicenseID)
         {
             InitializeComponent();
-            this._LocalDrivingApplicationID = localDrivingApplicationID;
+            this._ID = id;
+            this.byLicenseID = byLicenseID;
         }
+       
 
         private void frmShowLicense_Load(object sender, EventArgs e)
         {
-            ctrlDrivingLicneseInfo1.LoadLicenseInfoByLDApplicationID(_LocalDrivingApplicationID);
+            if(byLicenseID)
+                ctrlDrivingLicneseInfo1.LoadLicenseInfoByLicenseID(_ID);
+            else
+                ctrlDrivingLicneseInfo1.LoadLicenseInfoByLDApplicationID(_ID);
         }
     }
 }

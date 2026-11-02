@@ -2,6 +2,7 @@
 using DVLD_DataAccessLayer;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -32,6 +33,32 @@ namespace DVLD_BusinessLayer
         {
             license.LicenseID = LicensesDataAccess.AddLicense(license);
             return license.LicenseID != -1;
+        }
+        public static bool UpdateLicenseStatus(int licenseID, bool isActive)
+        {
+            return LicensesDataAccess.UpdateLicenseStatus(licenseID, isActive);
+        }
+
+        private static bool DeactivateOldAndIssueNewLicense( Licenses newLicense, int oldLicenseID)
+        {
+            if (newLicense == null || oldLicenseID <= 0)
+                return false;
+
+            if (!UpdateLicenseStatus(oldLicenseID, false))
+                return false;
+
+            return AddLicense(newLicense);
+        }
+
+        public static bool Renew(Licenses newLicense, int oldLicenseID)
+        {
+           return DeactivateOldAndIssueNewLicense(newLicense, oldLicenseID);
+            
+        }
+        public static bool Replace(Licenses newLicense, int oldLicenseID)
+        {
+            newLicense.PaidFees = 0m;
+            return DeactivateOldAndIssueNewLicense(newLicense, oldLicenseID);
         }
 
     }

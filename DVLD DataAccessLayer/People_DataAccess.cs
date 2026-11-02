@@ -9,10 +9,23 @@ namespace DVLD_DataAccessLayer
 {
     public class People_DataAccess
     {
-        public static DataTable listPeople()
+        public static DataTable GetAllPeople()
         {
             DataTable dt = new DataTable();
-            string query = "select * from People ;";
+            string query = @"SELECT People.PersonID, People.NationalNo,
+              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+			  People.DateOfBirth, People.Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption ,
+			  People.Address, People.Phone, People.Email, 
+              People.NationalityCountryID, Countries.CountryName, People.ImagePath
+              FROM  People inner join Countries on People.NationalityCountryID = Countries.CountryID
+              ORDER BY People.FirstName";
+
             using(SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
             using(SqlCommand command = new SqlCommand(query, connection))
             {
@@ -250,10 +263,10 @@ namespace DVLD_DataAccessLayer
 
 
          }
-        public static bool isPersonExistsByNationalNo(string nationalID)
+        public static int isPersonExistsByNationalNo(string nationalID)
         {
-            bool isFound = false;
-            string query = "select 1 from People where NationalNo = @nationalNo;";
+            int personID = -1;
+            string query = "select PersonID from People where NationalNo = @nationalNo;";
 
             using(SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
             using( SqlCommand command = new SqlCommand(query,connection))
@@ -266,9 +279,9 @@ namespace DVLD_DataAccessLayer
 
                     object result = command.ExecuteScalar();
 
-                    if(result != null)
+                    if (result != null && int.TryParse(result.ToString(), out int insertedID))
                     {
-                        isFound = true;
+                        personID = insertedID;
                     }
                 }
                 catch (Exception ex)
@@ -276,7 +289,7 @@ namespace DVLD_DataAccessLayer
                     Console.WriteLine("Error:"+ex.Message);
                 }
             }
-            return isFound;
+            return personID;
         }
 
     }

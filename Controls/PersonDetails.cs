@@ -46,7 +46,6 @@ namespace DVLD_Project
         {
             if (currentPerson.Gender == 0)
             {
-                
                 pbProfilePicture.Image = Properties.Resources.gender_male;
             }
             else

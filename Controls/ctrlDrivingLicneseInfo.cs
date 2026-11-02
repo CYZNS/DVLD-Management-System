@@ -14,9 +14,36 @@ namespace DVLD_Project.Controls
 {
     public partial class ctrlDrivingLicneseInfo : UserControl
     {
+        public Licenses LicenseLoaded { get; private set; }
+        public Driver DriverLoaded { get; private set; }
         public ctrlDrivingLicneseInfo()
         {
             InitializeComponent();
+        }
+        private void DisplayLicense(Licenses license)
+        {
+            LicenseLoaded = null;
+
+            if (license == null)
+            {
+                ClearLicenseInfo();
+                MessageBox.Show("License not found.");
+                return;
+            }
+
+            Driver driver = DriverBusiness.FindDriverByDriverID(license.DriverID);
+
+            if (driver == null)
+            {
+                ClearLicenseInfo();
+                MessageBox.Show("Driver information not found.");
+                return;
+            }
+
+            LicenseLoaded = license;
+            DriverLoaded = driver;
+
+            fillLicenseInfo(license, driver);
         }
         private void fillLicenseInfo(Licenses license, Driver driver)
         {
@@ -51,18 +78,37 @@ namespace DVLD_Project.Controls
             int applicationID = LocalDrivingLicenseAppBusiness.GetBaseApplicationID(localDrivingApplicationID);
 
             Licenses license = LicenseBusiness.FindLicenseByApplicationID(applicationID);
-            Driver driver = DriverBusiness.FindDriverByDriverID(license.DriverID);
+            
+            DisplayLicense(license);
 
-           fillLicenseInfo(license, driver);
+        }
+        public void ClearLicenseInfo()
+        {
+            LicenseLoaded = null;
+            DriverLoaded = null;
 
+            lbClassName.Text = "????";
+            lbName.Text = "????";
+            lbLicenseID.Text = "????";
+            lbNationalNo.Text = "????";
+            lbGender.Text = "????";
+            lbIssueDate.Text = "????";
+            lbIssueReason.Text = "????";
+            lbNotes.Text = "????";
+            lbIsActive.Text = "????";
+            lbDateOfBirth.Text = "????";
+            lbDriverID.Text = "????";
+            lbExpirationDate.Text = "????";
+            lbIsDetained.Text = "????";
+
+            pbPersonImage.ImageLocation = null;
+            pbPersonImage.Image = Properties.Resources.anonymous_man;
         }
         public void LoadLicenseInfoByLicenseID(int LicenseID)
         {
-
             Licenses license = LicenseBusiness.FindLicenseByLicenseID(LicenseID);
-            Driver driver = DriverBusiness.FindDriverByDriverID(license.DriverID);
-
-            fillLicenseInfo(license, driver);
+          
+            DisplayLicense(license);
 
         }
     }

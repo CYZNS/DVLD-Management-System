@@ -1,5 +1,6 @@
 ﻿using DVLD.Models;
 using DVLD_BusinessLayer;
+using DVLD_Project.InternationalLicense;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,24 @@ namespace DVLD_Project.License
             dgvLocalLicenses.Columns["ExpirationDate"].HeaderText = "Expiration Date";
             dgvLocalLicenses.Columns["IsActive"].HeaderText = "Is Active";
 
+            dgvInternationLicenses.DataSource = InternationalLicenseBusiness.GetAllInternationalLicensesForPersonID(person.PersonID);
+            dgvInternationLicenses.Columns["InternationalLicenseID"].HeaderText = "Int.Lic.ID";
+        }
 
+        private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedLicenseID = Convert.ToInt32(dgvLocalLicenses.CurrentRow.Cells["LicenseID"].Value);
+            frmShowLicense showLicenseForm = new frmShowLicense(selectedLicenseID, true);
+            showLicenseForm.StartPosition = FormStartPosition.CenterScreen;
+            showLicenseForm.ShowDialog();
+        }
+
+        private void showLicenseInfoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int selectedLicenseID = Convert.ToInt32(dgvInternationLicenses.CurrentRow.Cells["InternationalLicenseID"].Value);
+            frmShowInternationalLicenseInfo showLicenseForm = new frmShowInternationalLicenseInfo(selectedLicenseID);
+            showLicenseForm.StartPosition = FormStartPosition.CenterScreen;
+            showLicenseForm.ShowDialog();
         }
     }
 }

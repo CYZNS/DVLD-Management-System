@@ -14,7 +14,7 @@ namespace DVLD_BusinessLayer
 
         public static DataTable getAllPeople()
         {
-            return People_DataAccess.listPeople();
+            return People_DataAccess.GetAllPeople();
         }
         public static People FindPerson(int personID)
         {
@@ -33,6 +33,10 @@ namespace DVLD_BusinessLayer
             return People_DataAccess.deletePerson(personID);
         }
         public static bool isPersonExistsByNationalNo(string nationalNo)
+        {
+            return People_DataAccess.isPersonExistsByNationalNo(nationalNo)!=-1;
+        }
+        public static int getPersonIDByNationalNo(string nationalNo)
         {
             return People_DataAccess.isPersonExistsByNationalNo(nationalNo);
         }

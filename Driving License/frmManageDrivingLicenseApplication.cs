@@ -17,7 +17,7 @@ namespace DVLD_Project.Driving_License
 {
     public partial class frmManageLocalDrivingLicenseApplications : Form
     {
-        private DataTable dtDrivingLicenseApplications = LocalDrivingLicenseAppBusiness.GetAllLocalDrivingApplications();
+        private DataTable dtDrivingLicenseApplications;
 
         public frmManageLocalDrivingLicenseApplications()
         {
@@ -27,18 +27,17 @@ namespace DVLD_Project.Driving_License
         {
             dtDrivingLicenseApplications = LocalDrivingLicenseAppBusiness.GetAllLocalDrivingApplications();
             dgvLocalDrivingApplications.DataSource = dtDrivingLicenseApplications;
-
-            dgvLocalDrivingApplications.Columns["LocalDrivingLicenseApplicationID"].HeaderText = "L.D.L.AppID";
-            dgvLocalDrivingApplications.Columns["ClassName"].HeaderText = "Driving Class";
-            dgvLocalDrivingApplications.Columns["PassedTestCount"].HeaderText = "Passed Tests";
-            dgvLocalDrivingApplications.Columns["FullName"].HeaderText = "Full Name";
-
             lbRecords.Text = dgvLocalDrivingApplications.RowCount.ToString();
         }
         private void frmManageDrivingLicenseApplication_Load(object sender, EventArgs e)
         {
             ShowLicenseStripMenuItem2.Enabled = false;
+            
             refreshForm();
+            dgvLocalDrivingApplications.Columns["LocalDrivingLicenseApplicationID"].HeaderText = "L.D.L.AppID";
+            dgvLocalDrivingApplications.Columns["ClassName"].HeaderText = "Driving Class";
+            dgvLocalDrivingApplications.Columns["PassedTestCount"].HeaderText = "Passed Tests";
+            dgvLocalDrivingApplications.Columns["FullName"].HeaderText = "Full Name";
         }
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -237,7 +236,7 @@ namespace DVLD_Project.Driving_License
         {
             int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
 
-            frmShowLicense ShowLicense = new frmShowLicense(selectedID);
+            frmShowLicense ShowLicense = new frmShowLicense(selectedID,false); // false means showLicense by ApplicationID not licenseID
             ShowLicense.StartPosition = FormStartPosition.CenterScreen;
             ShowLicense.ShowDialog();
         }
