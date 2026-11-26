@@ -21,13 +21,25 @@ namespace DVLD_Project.Controls
 
         public void loadUserDetails(User user)
         {
-            
+            if(user == null)
+            {
+                ResetPersonDetails();
+                MessageBox.Show("No User Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             personDetails1.loadPersonDetails(user.Person);
             lbUserID.Text = user.UserID.ToString();
             lbUserName.Text = user.UserName;
             lbIsActive.Text = (user.IsActive == true) ? "YES" : "NO";
+
+        }
+        private void ResetPersonDetails()
+        {
+            personDetails1.ResetPersonInfo();
+            lbUserID.Text = "[???]";
+            lbUserName.Text = "[???]";
+            lbIsActive.Text = "[???]"   ;
         }
 
-        
     }
 }

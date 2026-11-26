@@ -160,12 +160,11 @@ namespace DVLD_Project
         private void _ResetDefualtValues()
         {
             //this will setup the form with the default values based on the mode (Add or Update)
-
+             
             if (mode == enmode.AddUser)
             {
                 lbTitle.Text = "Add New User";
                 this.Text = "Add New User";
-               // user = new clsUser();
 
                 tcLoginInfo.Enabled = false;
 
@@ -194,11 +193,9 @@ namespace DVLD_Project
             _ResetDefualtValues();
 
             if (mode == enmode.UpdateUser)
-            {
-
                 fillFormWithUserDetails();
 
-            }
+
 
         }
         private void tbConfirmPassword_Validating(object sender, CancelEventArgs e)

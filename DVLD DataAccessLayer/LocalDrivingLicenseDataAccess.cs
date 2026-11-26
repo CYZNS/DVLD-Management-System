@@ -68,16 +68,16 @@ namespace DVLD_DataAccessLayer
                     return null;
                 }
             }
-            ApplicationModel BaseApplication = ApplicationDataAccess.FindApplication(ApplicationID);
-            if(BaseApplication != null)
+            if(ApplicationID != -1 || LicenseClassID != -1)
             {
-                return new LocalDrivingLicenseApplication(BaseApplication.ApplicationID, BaseApplication.PersonID, BaseApplication.Person, BaseApplication.ApplicationDate, BaseApplication.ApplicationTypeID, BaseApplication.applicationType, BaseApplication.ApplicationStatus
-                    , BaseApplication.LastStatusDate, BaseApplication.PaidFees, BaseApplication.UserID, LocalDrivingApplicationID, LicenseClassID);
+                ApplicationModel BaseApplication = ApplicationDataAccess.FindApplication(ApplicationID);
+                if (BaseApplication != null)
+                {
+                    return new LocalDrivingLicenseApplication(BaseApplication.ApplicationID, BaseApplication.PersonID, BaseApplication.Person, BaseApplication.ApplicationDate, BaseApplication.ApplicationTypeID, BaseApplication.applicationType, BaseApplication.ApplicationStatus
+                        , BaseApplication.LastStatusDate, BaseApplication.PaidFees, BaseApplication.UserID, LocalDrivingApplicationID, LicenseClassID);
+                }
             }
-
-           
-
-
+            
             return null;
 
         }

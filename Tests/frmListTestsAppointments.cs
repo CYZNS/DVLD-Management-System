@@ -61,7 +61,7 @@ namespace DVLD_Project.Appointments
         private void btnAddVisionTestAppointment_Click(object sender, EventArgs e)
         {
 
-            if(TestAppointmentBusiness.HasActiveAppointment(_localDrivingLicenseApplicationID, 1))
+            if(TestAppointmentBusiness.HasActiveAppointment(_localDrivingLicenseApplicationID, _TestTypeID))
             {
                 MessageBox.Show("You already have an active appointment for this test type.");
                 return;

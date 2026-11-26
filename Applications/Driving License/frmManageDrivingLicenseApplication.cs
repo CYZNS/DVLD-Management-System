@@ -70,16 +70,11 @@ namespace DVLD_Project.Driving_License
         {
             if (dgvLocalDrivingApplications.CurrentRow != null)
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to edit this User?", "Confirm Edit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
-                    frmNewLocalDrivingLicenseApplication form = new frmNewLocalDrivingLicenseApplication(selectedID);
-                    form.StartPosition = FormStartPosition.CenterScreen;
-                    form.ShowDialog();
-                    refreshForm();
-                }
-
+                int selectedID = Convert.ToInt32(dgvLocalDrivingApplications.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+                frmNewLocalDrivingLicenseApplication form = new frmNewLocalDrivingLicenseApplication(selectedID);
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.ShowDialog();
+                refreshForm();
             }
             else
             {

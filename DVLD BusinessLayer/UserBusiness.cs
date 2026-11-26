@@ -49,13 +49,7 @@ namespace DVLD_BusinessLayer
         }
         public static bool ChangePassword(int userID,string newpassword)
         {
-            if(newpassword.Length>=4)
-            {
-                UsersDataAccess.ChangePassword(userID, newpassword);
-                return true;
-            }
-            else
-                return false;
+            return newpassword.Length >= 4 && UsersDataAccess.ChangePassword(userID, newpassword);
 
         }
         public static bool Save(User user)

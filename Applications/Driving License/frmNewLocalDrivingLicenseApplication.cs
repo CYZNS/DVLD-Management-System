@@ -161,6 +161,7 @@ namespace DVLD_Project.Driving_License
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             fillLocalDrivingApplicationWithFormData();
 
             int ApplicationID = ApplicationBusiness.GetActiveApplication( _LDApplication.PersonID,_LDApplication.LicenseClassID,_LDApplication.ApplicationTypeID);

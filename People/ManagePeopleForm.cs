@@ -35,11 +35,10 @@ namespace DVLD_Project
             form.ShowDialog();
             refreshForm();
         }
-        private void pbAddPerson_Click(object sender, EventArgs e)
+        private void btnAddPerson_Click(object sender, EventArgs e)
         {
             showAddPersonForm();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -146,5 +145,7 @@ namespace DVLD_Project
             form.OnPersonUpdated += refreshForm;
             form.ShowDialog();
         }
+
+       
     }
 }

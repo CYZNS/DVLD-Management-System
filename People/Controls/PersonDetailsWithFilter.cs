@@ -55,7 +55,7 @@ namespace DVLD_Project.Controls
                 {
                     MessageBox.Show($"No Person with National No. = {tbFindBy.Text} exists");
                     personID = -1;
-                    personDetails1.resetPersonInfo();
+                    personDetails1.ResetPersonInfo();
                 }
             }
         }
@@ -66,6 +66,7 @@ namespace DVLD_Project.Controls
         }
         public void loadPersonDetailsForUpdate(People person)
         {
+            cbFilterBy.SelectedIndex = 1; 
             personDetails1.loadPersonDetails(person);
             disableAndSetupGPFilerForUpdateMode();
         }

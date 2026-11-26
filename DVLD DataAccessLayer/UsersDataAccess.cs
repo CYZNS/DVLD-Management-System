@@ -95,7 +95,6 @@ namespace DVLD_DataAccessLayer
         //}
         public static User FindUser(int UserID)
         {
-            // 1. The JOIN query fetches all columns from both tables at exactly the same time.
             string query = @"SELECT * 
                      FROM Users 
                      INNER JOIN People ON Users.PersonID = People.PersonID 

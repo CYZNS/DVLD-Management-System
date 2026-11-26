@@ -33,6 +33,11 @@ namespace DVLD_Project
             else
                 mode = enmode.updatePerson;
         }
+        public AddEditPersonForm()
+        {
+            InitializeComponent();
+            mode = enmode.addPerson;
+        }
         private Guna2RadioButton getCheckedRadioButton()
         {
             if (rbMale.Checked)
@@ -133,6 +138,11 @@ namespace DVLD_Project
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(!this.ValidateChildren())
+            {
+                MessageBox.Show("Please fix the errors before saving.");
+                return;
+            }
             fillPersonWithFormDetails();
             if(PeopleBusiness.savePerson(person))
             {
@@ -141,14 +151,17 @@ namespace DVLD_Project
                 else
                     MessageBox.Show("person updated successfuly");
 
+                this.personID = person.PersonID;
+                mode = enmode.updatePerson;
+                lbPersonID.Text = personID.ToString();
+                lbTitle.Text = "Update Person";
+
+
                 OnPersonAdded?.Invoke(person);
             }
 
            
-             this.personID = person.PersonID;
-             mode = enmode.updatePerson;
-             lbPersonID.Text = personID.ToString();
-             lbTitle.Text = "Update Person";
+             
          
         }
 
@@ -161,6 +174,7 @@ namespace DVLD_Project
         {
             fillCountriesInComboBox();
             dtmDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
+            dtmDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
             setupForm();
         }
 
@@ -206,10 +220,9 @@ namespace DVLD_Project
 
             if (textBox == tbNationalNo)
             {
-                if (PeopleBusiness.isPersonExistsByNationalNo(tbNationalNo.Text.Trim()))
+                if (tbNationalNo.Text.Trim() != person.NationalID && PeopleBusiness.isPersonExistsByNationalNo(tbNationalNo.Text.Trim()))
                 {
                     e.Cancel = true;
-                    btnSave.Enabled = false;
                     errorProvider1.SetError(tbNationalNo, "National number is used for another person");
                 }
             }
@@ -220,7 +233,6 @@ namespace DVLD_Project
                     if (!tbEmail.Text.Contains("@gmail.com"))
                     {
                         e.Cancel = true;
-                        btnSave.Enabled = false;
                         errorProvider1.SetError(tbEmail, "email address should be in this format: person@gmail.com");
                     }
                 }
@@ -239,10 +251,7 @@ namespace DVLD_Project
             if(textBox!=null)
             {
                 errorProvider1.SetError(textBox,"");
-            }
-
-            btnSave.Enabled = true;
-            
+            }            
 
         }
 

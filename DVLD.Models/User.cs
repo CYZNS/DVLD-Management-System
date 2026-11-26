@@ -26,7 +26,7 @@ namespace DVLD.Models
             this.IsActive = isActive;
         }
 
-        public User(int personID, People person1) : this(-1,personID, person1, "", "", false)
+        public User(int personID, People person1) : this(-1,personID, person1, "", "", true)
         {
 
         }

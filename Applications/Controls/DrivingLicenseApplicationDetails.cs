@@ -29,6 +29,7 @@ namespace DVLD_Project.Controls
                 lbLicenseClass.Text = licenseClass.ClassName;
                 lbPassedTests.Text = passedTests.ToString();
 
+                // I instantiated an object because I don't have composition with ApplicationModel , so I need to create an instance of ApplicationModel using the properties of DLapplication. This is necessary because the LoadApplicationDetails method expects an ApplicationModel object as a parameter.
                 ApplicationModel application = new ApplicationModel(DLapplication.ApplicationID, DLapplication.PersonID, DLapplication.Person, DLapplication.ApplicationDate, DLapplication.ApplicationTypeID, DLapplication.applicationType
                , DLapplication.ApplicationStatus, DLapplication.LastStatusDate, DLapplication.PaidFees, DLapplication.UserID);
 

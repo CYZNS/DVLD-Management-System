@@ -38,7 +38,6 @@ namespace DVLD_Project.Appointments.VisionTestAppointments
 
         private void frmScheduleTest_Load(object sender, EventArgs e)
         {
-
             ctrlScheduleTest1.loadTestDetails(this._AppointmentID, this._localDrivingLicenseApplicationID,_TestTypeID);
         }
         private void ctrlScheduleTestOnSaveCompleted()

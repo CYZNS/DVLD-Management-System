@@ -65,7 +65,7 @@ namespace DVLD_Project
         private void fillUserControlWithPersonDetails(People person)
         {
             this.personID = person.PersonID;
-            lbName.Text = $"{person.FirstName} {person.SecondName} {person.LastName}";
+            lbName.Text = $"{person.FullName}";
             lbPersonID.Text = person.PersonID.ToString();
             lbNationalID.Text = person.NationalID;
             lbDateOfBirth.Text = person.DateOfBirth.ToString();
@@ -91,6 +91,7 @@ namespace DVLD_Project
             }
             else
             {
+                ResetPersonInfo();
                 MessageBox.Show("Person doesn't exist");
             }
 
@@ -115,9 +116,10 @@ namespace DVLD_Project
                 MessageBox.Show("please load a person first");
            
         }
-        public void resetPersonInfo()
+        public void ResetPersonInfo()
         {
             personID = -1;
+            currentPerson = null;
             lbName.Text = "????";
             lbPersonID.Text = "????";
             lbNationalID.Text = "????";
@@ -127,6 +129,7 @@ namespace DVLD_Project
             lbPhone.Text = "????";
             lbCountry.Text = "????";
             lbAddress.Text = "????";
+            pbProfilePicture.ImageLocation = null;
             pbProfilePicture.Image = Properties.Resources.anonymous_man;
         }
 
